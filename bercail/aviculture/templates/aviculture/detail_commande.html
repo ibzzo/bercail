@@ -1,0 +1,46 @@
+{% extends 'aviculture/base.html' %}
+
+{% block content %}
+    <div style="margin-top: 20px;">
+        <h1>Résultat de la recherche de commande</h1>
+
+        {% if commande %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Numéro de commande</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Téléphone</th>
+                        <th scope="col">Option</th>
+                        <th scope="col">Commentaire</th>
+                        <th scope="col">Statut</th>
+                        <th scope="col">Date de commande</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in commande %}
+                        <tr>
+                            <td class="text-success">{{ item.numero_commande }}</td>
+                            <td>{{ item.nom }}</td>
+                            <td>{{ item.telephone }}</td>
+                            <td>{{ item.option }}</td>
+                            <td>{{ item.commentaire }}</td>
+                            <td>{{ item.statut }}</td>
+                            <td>{{ item.date_commande }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Aucune commande trouvée.</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function updateStatut(numero_commande, statut) {
+            // Ajoutez ici la logique pour mettre à jour le statut de la commande dans la base de données
+            console.log("Numéro de commande :", numero_commande);
+            console.log("Nouveau statut :", statut);
+        }
+    </script>
+{% endblock %}
